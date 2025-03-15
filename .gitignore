@@ -1,0 +1,9 @@
+# Ignore the contents of venv, models, and raw_data directories
+venv/*
+models/*
+raw_data/*
+
+# Allow the directories themselves to be tracked
+!venv/
+!models/
+!raw_data/

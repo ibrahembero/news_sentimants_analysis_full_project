@@ -1,0 +1,312 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "TextBlob",
+        "importPath": "textblob",
+        "description": "textblob",
+        "isExtraImport": true,
+        "detail": "textblob",
+        "documentation": {}
+    },
+    {
+        "label": "TextBlob",
+        "importPath": "textblob",
+        "description": "textblob",
+        "isExtraImport": true,
+        "detail": "textblob",
+        "documentation": {}
+    },
+    {
+        "label": "SentimentIntensityAnalyzer",
+        "importPath": "vaderSentiment.vaderSentiment",
+        "description": "vaderSentiment.vaderSentiment",
+        "isExtraImport": true,
+        "detail": "vaderSentiment.vaderSentiment",
+        "documentation": {}
+    },
+    {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "TextCleaner",
+        "importPath": "text_cleaner",
+        "description": "text_cleaner",
+        "isExtraImport": true,
+        "detail": "text_cleaner",
+        "documentation": {}
+    },
+    {
+        "label": "TextCleaner",
+        "importPath": "text_cleaner",
+        "description": "text_cleaner",
+        "isExtraImport": true,
+        "detail": "text_cleaner",
+        "documentation": {}
+    },
+    {
+        "label": "NewsScraper",
+        "importPath": "news_scraper",
+        "description": "news_scraper",
+        "isExtraImport": true,
+        "detail": "news_scraper",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "data_loader",
+        "description": "data_loader",
+        "isExtraImport": true,
+        "detail": "data_loader",
+        "documentation": {}
+    },
+    {
+        "label": "SentimentAnalyzer",
+        "importPath": "sentiment_analyzer",
+        "description": "sentiment_analyzer",
+        "isExtraImport": true,
+        "detail": "sentiment_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "ModelTrainer",
+        "importPath": "model_trainer",
+        "description": "model_trainer",
+        "isExtraImport": true,
+        "detail": "model_trainer",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "NewsScraper",
+        "kind": 6,
+        "importPath": "src.web_scraper.news_scraper",
+        "description": "src.web_scraper.news_scraper",
+        "peekOfCode": "class NewsScraper:\n    def __init__(self, num_articles=10):\n        self.num_articles = num_articles\n        self.text_cleaner = TextCleaner()  # Initialize the TextCleaner\n        self.analyzer = SentimentIntensityAnalyzer()  # Initialize the sentiment analyzer\n        # Dynamically get the absolute path to the model\n        model_path = os.path.join(os.path.dirname(__file__), '../../models/random_forest_news_sentiment_model.pkl')\n        # Now use this path to load the model\n        self.model = joblib.load(model_path) # Load the saved model (update the path)\n    def fetch_news(self, url=\"https://news.ycombinator.com/\"):",
+        "detail": "src.web_scraper.news_scraper",
+        "documentation": {}
+    },
+    {
+        "label": "test_scraper",
+        "kind": 2,
+        "importPath": "src.web_scraper.test_scraper",
+        "description": "src.web_scraper.test_scraper",
+        "peekOfCode": "def test_scraper():\n    # Initialize the NewsScraper with the number of articles you want to scrape\n    scraper = NewsScraper(num_articles=10)\n    # Scrape news from the website\n    news_df = scraper.fetch_news(url=\"https://news.ycombinator.com/\")  # Example URL\n    if news_df is not None:\n        # Define a ranking system for sentiment\n        sentiment_ranking = {'POSITIVE': 1, 'NEGATIVE': 2}\n        # Add a column for sentiment rank\n        news_df['sentiment_rank'] = news_df['sentiment_class'].map(sentiment_ranking)",
+        "detail": "src.web_scraper.test_scraper",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "kind": 6,
+        "importPath": "src.data_loader",
+        "description": "src.data_loader",
+        "peekOfCode": "class DataLoader:\n    def __init__(self, file_path):\n        self.file_path = file_path\n    def load_data(self):\n        return pd.read_csv(self.file_path)",
+        "detail": "src.data_loader",
+        "documentation": {}
+    },
+    {
+        "label": "data_loader",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "data_loader = DataLoader('raw_data/news.csv')\ndf = data_loader.load_data()\nif df is not None:\n    print('Data loaded successfully...')\nelse:\n    raise ValueError('There is an error with loading data...')\n# Clean the text\ntext_cleaner = TextCleaner()\ndf_cleaned = text_cleaner.apply_cleaning(df, 'news')\nif df_cleaned is not None:",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "df = data_loader.load_data()\nif df is not None:\n    print('Data loaded successfully...')\nelse:\n    raise ValueError('There is an error with loading data...')\n# Clean the text\ntext_cleaner = TextCleaner()\ndf_cleaned = text_cleaner.apply_cleaning(df, 'news')\nif df_cleaned is not None:\n    print('Data cleaned successfully...')",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "text_cleaner",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "text_cleaner = TextCleaner()\ndf_cleaned = text_cleaner.apply_cleaning(df, 'news')\nif df_cleaned is not None:\n    print('Data cleaned successfully...')\nelse:\n    raise ValueError('There is an error with cleaning data...')\n# Apply sentiment analysis\nsentiment_analyzer = SentimentAnalyzer()\ndf_with_sentiment = sentiment_analyzer.apply_sentiment_analysis(df_cleaned, 'news')\nif df_with_sentiment is not None:",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "df_cleaned",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "df_cleaned = text_cleaner.apply_cleaning(df, 'news')\nif df_cleaned is not None:\n    print('Data cleaned successfully...')\nelse:\n    raise ValueError('There is an error with cleaning data...')\n# Apply sentiment analysis\nsentiment_analyzer = SentimentAnalyzer()\ndf_with_sentiment = sentiment_analyzer.apply_sentiment_analysis(df_cleaned, 'news')\nif df_with_sentiment is not None:\n    print('Sentiment analysis applied successfully...')",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "sentiment_analyzer",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "sentiment_analyzer = SentimentAnalyzer()\ndf_with_sentiment = sentiment_analyzer.apply_sentiment_analysis(df_cleaned, 'news')\nif df_with_sentiment is not None:\n    print('Sentiment analysis applied successfully...')\nelse:\n    raise ValueError('There is an error with sentiment analysis...')\n# Drop unnecessary columns\ndf_with_sentiment = df_with_sentiment.drop(columns=['news', 'date'])\n# Prepare features and labels\nX = df_with_sentiment.drop(columns='sentiment')",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "df_with_sentiment",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "df_with_sentiment = sentiment_analyzer.apply_sentiment_analysis(df_cleaned, 'news')\nif df_with_sentiment is not None:\n    print('Sentiment analysis applied successfully...')\nelse:\n    raise ValueError('There is an error with sentiment analysis...')\n# Drop unnecessary columns\ndf_with_sentiment = df_with_sentiment.drop(columns=['news', 'date'])\n# Prepare features and labels\nX = df_with_sentiment.drop(columns='sentiment')\ny = df_with_sentiment['sentiment']",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "df_with_sentiment",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "df_with_sentiment = df_with_sentiment.drop(columns=['news', 'date'])\n# Prepare features and labels\nX = df_with_sentiment.drop(columns='sentiment')\ny = df_with_sentiment['sentiment']\n# Train the model\nmodel_trainer = ModelTrainer()\naccuracy, report = model_trainer.train_model(X, y)\nif accuracy is not None and report is not None:\n    print('Model trained successfully...')\nelse:",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "X",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "X = df_with_sentiment.drop(columns='sentiment')\ny = df_with_sentiment['sentiment']\n# Train the model\nmodel_trainer = ModelTrainer()\naccuracy, report = model_trainer.train_model(X, y)\nif accuracy is not None and report is not None:\n    print('Model trained successfully...')\nelse:\n    raise ValueError('There is an error with model training...')\n# Save the model",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "y = df_with_sentiment['sentiment']\n# Train the model\nmodel_trainer = ModelTrainer()\naccuracy, report = model_trainer.train_model(X, y)\nif accuracy is not None and report is not None:\n    print('Model trained successfully...')\nelse:\n    raise ValueError('There is an error with model training...')\n# Save the model\nmodel_trainer.save_model()",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "model_trainer",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "model_trainer = ModelTrainer()\naccuracy, report = model_trainer.train_model(X, y)\nif accuracy is not None and report is not None:\n    print('Model trained successfully...')\nelse:\n    raise ValueError('There is an error with model training...')\n# Save the model\nmodel_trainer.save_model()\n# to run the program: python src/main.py",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "ModelTrainer",
+        "kind": 6,
+        "importPath": "src.model_trainer",
+        "description": "src.model_trainer",
+        "peekOfCode": "class ModelTrainer:\n    def __init__(self):\n        self.model = RandomForestClassifier(n_estimators=100, random_state=42)\n    def train_model(self, X, y):\n        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n        self.model.fit(X_train, y_train)\n        y_pred = self.model.predict(X_test)\n        accuracy = accuracy_score(y_test, y_pred)\n        report = classification_report(y_test, y_pred)\n        with open('results.txt', 'w') as file:",
+        "detail": "src.model_trainer",
+        "documentation": {}
+    },
+    {
+        "label": "SentimentAnalyzer",
+        "kind": 6,
+        "importPath": "src.sentiment_analyzer",
+        "description": "src.sentiment_analyzer",
+        "peekOfCode": "class SentimentAnalyzer:\n    @staticmethod\n    def get_sentiment_features(text):\n        blob = TextBlob(text)\n        polarity = blob.sentiment.polarity\n        subjectivity = blob.sentiment.subjectivity\n        return polarity, subjectivity\n    def apply_sentiment_analysis(self, df, text_column):\n        df[['polarity', 'subjectivity']] = df[text_column].apply(lambda x: pd.Series(self.get_sentiment_features(x)))\n        return df",
+        "detail": "src.sentiment_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "TextCleaner",
+        "kind": 6,
+        "importPath": "src.text_cleaner",
+        "description": "src.text_cleaner",
+        "peekOfCode": "class TextCleaner:\n    def clean_text(self, text):\n        text = re.sub(r'\\d+', '', text)  # Remove numbers\n        text = re.sub(r'\\s+', ' ', text)  # Remove extra spaces\n        text = re.sub(r'[^\\w\\s]', '', text)  # Remove punctuation\n        return text.lower()\n    def apply_cleaning(self, df, column):\n        df[column] = df[column].apply(self.clean_text)\n        return df",
+        "detail": "src.text_cleaner",
+        "documentation": {}
+    }
+]
